@@ -9,15 +9,18 @@ import { brand, brandThemeCss } from "@/config/brand";
 
 // Venture Management brand type: Roboto for body text (Light for figures, see
 // .text-figure) and Raleway SemiBold for headings.
+//
+// Both are variable fonts, loaded without a weight list on purpose: a weight
+// list makes Google serve "/l/font?kit=...&skey=..." files, and Turbopack on
+// Windows fails to resolve those ("next/font/google queries have exactly one
+// entry"). The variable file covers every weight from 100 to 900.
 const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
   variable: "--font-body",
 });
 
 const raleway = Raleway({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
   variable: "--font-heading",
 });
 
