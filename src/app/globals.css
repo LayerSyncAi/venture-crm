@@ -108,7 +108,7 @@
   --color-hot: var(--hot);
   --color-warm: var(--warm);
   --color-cold: var(--cold);
-  --font-sans: var(--font-geist);
+  --font-sans: var(--font-body);
 }
 
 /* One line-icon family: interface icons share the product icons' 1.5 stroke.
@@ -119,10 +119,17 @@
   }
 }
 
+/* Brand headings: Raleway (SemiBold unless a utility sets another weight). */
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading), var(--font-body), system-ui, sans-serif;
+}
+
 body {
   background: var(--content-bg);
   color: var(--text);
-  font-family: var(--font-geist), system-ui, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
   font-size: 15px;
   line-height: 1.45rem;
   -webkit-font-smoothing: antialiased;

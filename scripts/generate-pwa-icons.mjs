@@ -3,11 +3,12 @@ import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 
-// Builds every raster icon from the SyncEstate SVGs in public/brand:
-//   app-icon-dark.svg  charcoal tile with the green ribbon (home screens)
-//   mark.svg           the ribbon alone (maskable icons, centred on charcoal)
+// Builds every raster icon from the Venture Management SVGs in public/brand:
+//   app-icon-dark.svg  navy tile with the cream V mark (home screens)
+//   mark.svg           the cream mark alone (maskable icons, centred on navy)
 //   favicon.svg        tuned to stay legible at 16-32 px
-//   lockup.svg         mark + "SyncEstate" wordmark (wordmark and share image)
+//   lockup.svg         mark + wordmark side by side (wordmark.png)
+//   logo-stacked.svg   the brand-board stacked logo (share image)
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = path.join(__dirname, '..', 'public');
@@ -22,10 +23,11 @@ const appIcon = path.join(brandDir, 'app-icon-dark.svg');
 const mark = path.join(brandDir, 'mark.svg');
 const favicon = path.join(brandDir, 'favicon.svg');
 const lockup = path.join(brandDir, 'lockup.svg');
+const stacked = path.join(brandDir, 'logo-stacked.svg');
 
-// Charcoal and paper from the SyncEstate palette.
-const INK = { r: 15, g: 20, b: 25, alpha: 1 };
-const PAPER = { r: 242, g: 244, b: 243, alpha: 1 };
+// Navy #315469 and cream #F8F0E6 from the Venture Management palette.
+const INK = { r: 49, g: 84, b: 105, alpha: 1 };
+const PAPER = { r: 248, g: 240, b: 230, alpha: 1 };
 const CLEAR = { r: 0, g: 0, b: 0, alpha: 0 };
 
 // SVGs are vector, so render them large and let sharp scale down cleanly.
@@ -62,7 +64,7 @@ function pngToIco(png) {
 }
 
 async function generateIcons() {
-  console.log('Generating icons from the SyncEstate SVGs...');
+  console.log('Generating icons from the Venture Management SVGs...');
 
   for (const size of sizes) {
     await svg(appIcon, size)
@@ -97,8 +99,8 @@ async function generateIcons() {
   await sharp(lockup, { density: 288 }).resize({ height: 96 }).png().toFile(path.join(brandDir, 'wordmark.png'));
   console.log('  brand/wordmark.png');
 
-  // Share image: the lockup centred on paper, 1200 x 630.
-  const lockupPng = await sharp(lockup, { density: 600 }).resize({ width: 720 }).png().toBuffer();
+  // Share image: the stacked logo centred on cream, 1200 x 630.
+  const lockupPng = await sharp(stacked, { density: 600 }).resize({ height: 400 }).png().toBuffer();
   await sharp({ create: { width: 1200, height: 630, channels: 4, background: PAPER } })
     .composite([{ input: lockupPng, gravity: 'center' }])
     .png()

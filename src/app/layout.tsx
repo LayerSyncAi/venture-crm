@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Inter, Playfair_Display } from "next/font/google";
+import { Inter, Playfair_Display, Raleway, Roboto } from "next/font/google";
 import "./globals.css";
 import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server";
 import { ConvexClientProvider } from "@/components/providers/convex-client-provider";
@@ -7,11 +7,18 @@ import { AnimatedToaster } from "@/components/ui/animated-toaster";
 import { PWARegister } from "@/components/pwa/pwa-register";
 import { brand, brandThemeCss } from "@/config/brand";
 
-// The interface face. Large figures use its light weight (see .text-figure).
-const geist = Geist({
+// Venture Management brand type: Roboto for body text (Light for figures, see
+// .text-figure) and Raleway SemiBold for headings.
+const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-geist",
+  weight: ["300", "400", "500", "700"],
+  variable: "--font-body",
+});
+
+const raleway = Raleway({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-heading",
 });
 
 // Kept for SyncMedia brochure templates, which are designed around Inter.
@@ -79,7 +86,7 @@ export default function RootLayout({
 }) {
   return (
     <ConvexAuthNextjsServerProvider>
-      <html lang="en" className={`${geist.variable} ${inter.variable} ${playfair.variable}`}>
+      <html lang="en" className={`${roboto.variable} ${raleway.variable} ${inter.variable} ${playfair.variable}`}>
         <body>
           {/* Brand colours: maps brand.ts values onto the --brand-* custom
               properties that globals.css reads. Inline so it applies at first

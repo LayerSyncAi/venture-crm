@@ -128,11 +128,11 @@ export function Logo({ className }: { className?: string }) {
   return (
     <span className={`relative inline-flex items-center ${className ?? ""}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/brand/lockup-reversed.svg" alt="SyncEstate" width={138} height={32} className="l-only-dark h-8 w-auto" />
+      <img src="/brand/lockup-reversed.svg" alt="Venture Management" width={138} height={32} className="l-only-dark h-8 w-auto" />
       {/* The light theme's own lockup: the mark straight on the page like the
           dark one, with a dark wordmark and the lime deepened for light grounds. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/brand/lockup-light.svg" alt="SyncEstate" width={138} height={32} className="l-only-light h-8 w-auto" />
+      <img src="/brand/lockup-light.svg" alt="Venture Management" width={138} height={32} className="l-only-light h-8 w-auto" />
     </span>
   );
 }

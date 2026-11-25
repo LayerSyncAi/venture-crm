@@ -91,7 +91,7 @@ function Frame({
         flexDirection: "column",
         background: dark ? c.ink : c.background,
         color: c.text,
-        fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', var(--font-geist), system-ui, sans-serif",
+        fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', var(--font-body), system-ui, sans-serif",
         overflow: "hidden",
         textAlign: "left",
       }}

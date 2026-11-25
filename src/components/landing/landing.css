@@ -41,7 +41,7 @@
   color-scheme: dark;
   background: var(--l-bg);
   color: var(--l-ink);
-  font-family: var(--font-geist), system-ui, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
   min-height: 100svh;
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;

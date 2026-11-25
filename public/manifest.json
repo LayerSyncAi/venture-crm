@@ -1,13 +1,16 @@
 {
-  "name": "SyncEstate",
-  "short_name": "SyncEstate",
-  "description": "Run your estate agency from your phone: leads, lettings, repairs, valuations, trust accounts and developments on one login.",
+  "name": "Venture Management",
+  "short_name": "Venture",
+  "description": "Venture Management CRM: leads, lettings, valuations and finance on one login.",
   "start_url": "/",
   "display": "standalone",
   "orientation": "natural",
-  "background_color": "#f2f4f3",
-  "theme_color": "#0f1419",
-  "categories": ["business", "productivity"],
+  "background_color": "#f8f0e6",
+  "theme_color": "#001f4d",
+  "categories": [
+    "business",
+    "productivity"
+  ],
   "lang": "en",
   "icons": [
     {
@@ -76,14 +79,24 @@
       "short_name": "Pipeline",
       "description": "View your sales pipeline",
       "url": "/app/dashboard",
-      "icons": [{ "src": "/icons/icon-96x96.png", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "/icons/icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
     },
     {
       "name": "Leads",
       "short_name": "Leads",
       "description": "View and manage leads",
       "url": "/app/leads",
-      "icons": [{ "src": "/icons/icon-96x96.png", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "/icons/icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
     }
   ]
 }
