@@ -1,0 +1,45 @@
+From 7e767d03d1cb10030f7ed63c4ce87fda2618b84f Mon Sep 17 00:00:00 2001
+From: Venture CRM <noreply@anthropic.com>
+Date: Wed, 25 Nov 2026 12:26:02 +0000
+Subject: [PATCH] Load Raleway and Roboto as variable fonts
+
+With a weight list, Google serves these fonts from /l/font?kit=...&skey=
+URLs, which Turbopack on Windows cannot resolve: npm run dev fails with
+"next/font/google queries have exactly one entry" and every page
+returns 500. Both are variable fonts, so loading them without a weight
+list gets plain /s/ URLs and still covers weights 100-900.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01RmKNDpjNdySfmdPcX1cZYD
+---
+ src/app/layout.tsx | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/app/layout.tsx b/src/app/layout.tsx
+index 9cb1e28..e35b2c8 100644
+--- a/src/app/layout.tsx
++++ b/src/app/layout.tsx
+@@ -9,15 +9,18 @@ import { brand, brandThemeCss } from "@/config/brand";
+ 
+ // Venture Management brand type: Roboto for body text (Light for figures, see
+ // .text-figure) and Raleway SemiBold for headings.
++//
++// Both are variable fonts, loaded without a weight list on purpose: a weight
++// list makes Google serve "/l/font?kit=...&skey=..." files, and Turbopack on
++// Windows fails to resolve those ("next/font/google queries have exactly one
++// entry"). The variable file covers every weight from 100 to 900.
+ const roboto = Roboto({
+   subsets: ["latin"],
+-  weight: ["300", "400", "500", "700"],
+   variable: "--font-body",
+ });
+ 
+ const raleway = Raleway({
+   subsets: ["latin"],
+-  weight: ["500", "600", "700"],
+   variable: "--font-heading",
+ });
+ 
+-- 
+2.43.0
+
